@@ -1,19 +1,14 @@
 package com.miracle.vjobs.controller;
 
-import com.miracle.vjobs.Dto.EmployerFormDto;
 import com.miracle.vjobs.Dto.StudentFormDto;
-import com.miracle.vjobs.model.Student;
 import com.miracle.vjobs.service.StudentService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.security.Principal;
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 public class StudentController {
@@ -25,30 +20,13 @@ public class StudentController {
     }
 
     @GetMapping("/students")
-    public String list( Model model, Principal principal) {
+    public String list(Model model, Principal principal, String speciality) {
 
-//        List<Student> students = new ArrayList<>();
-//        Student alex = new Student();
-//        alex.setProfession("Моторист");
-//        alex.setGender(MAN);
-//        alex.setName("Алексей");
-//        Student oleg = new Student();
-//        oleg.setProfession("Рулевой");
-//        oleg.setGender(MAN);
-//        oleg.setName("Олег");
-//        students.add(alex);
-//        students.add(oleg);
-//        List<Student> studentList = new ArrayList<>();
-//        if (position != null) {
-//            for (Student student : studentService.findAll()) {
-//                if (student.getPosition().contains(position)) {
-//                    studentList.add(student);
-//                }
-//            }
-//            model.addAttribute("students", studentList);
-//        } else {
+        if (speciality != null) {
+            model.addAttribute("students", studentService.findAllBySpeciality(speciality));
+        } else {
             model.addAttribute("students", studentService.findAll());
-//        }
+        }
         if (principal == null) {
             model.addAttribute("principalName", "noname");
         } else {

@@ -20,19 +20,13 @@ public class EmployerController {
     }
 
     @GetMapping("/")
-    public String list(Model model, Principal principal) {
+    public String list(Model model, Principal principal, String position) {
 
-//        List<Employer> employers = new ArrayList<>();
-//        Employer navigator = new Employer();
-//        navigator.setCompanyName("Навигаторъ");
-//        navigator.setPosition("Матрос");
-//        Employer viking = new Employer();
-//        viking.setCompanyName("Викинг");
-//        viking.setPosition("Капитан");
-//        employers.add(navigator);
-//        employers.add(viking);
-
-        model.addAttribute("employers", employerService.findAll());
+        if (position != null) {
+            model.addAttribute("employers", employerService.findAllByPosition(position));
+        } else {
+            model.addAttribute("employers", employerService.findAll());
+        }
         if (principal == null) {
             model.addAttribute("principalName", "noname");
         } else {

@@ -8,7 +8,9 @@ import com.miracle.vjobs.repository.VUserRepository;
 import org.springframework.stereotype.Service;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 @Service
 public class StudentService {
@@ -40,6 +42,12 @@ public class StudentService {
     }
 
     public List<Student> findAllBySpeciality(String speciality){
-        return studentRepository.findAllBySpeciality(speciality);
+        List<Student> students = new ArrayList<>();
+        for (Student student : studentRepository.findAll()) {
+            if (student.getSpeciality().trim().toLowerCase().contains(speciality.trim().toLowerCase(Locale.ROOT))){
+                students.add(student);
+            }
+        }
+        return students;
     }
 }
