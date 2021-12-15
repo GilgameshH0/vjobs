@@ -34,6 +34,16 @@ header {
 
 }
 
+.divRightPanell{
+    padding: 0 10px 10px 10px;
+    box-shadow: 0 0 1px 0;
+}
+
+.padd{
+    padding-right: 15px;
+    padding-left: 15px;
+    
+}
 
 .divSignIN{
     
@@ -61,4 +71,62 @@ header {
     margin-left: 20px;
     margin-right:  20px;
     margin-bottom: 50px;
+}
+
+.Poisk{
+    margin-bottom: 30px;
+}
+
+.footerPadding{
+    
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.cont1{
+    max-width: 720px;
+}
+
+.footerMargin{
+
+   margin-top: 7.5rem !important;
+}
+
+.textAlignCenter{
+    text-align: center;
+}
+
+.textAlignRight{
+    text-align: right;
+}
+
+.padding7 {
+
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+.padding7G {
+
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+.padding0 {
+
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.leedm{
+    font-size: 1.15rem;
+}
+
+
+.labelMargin{
+    margin: 3px;
+}
+
+.divMarginBottom{
+    margin-bottom: 15px;
 }

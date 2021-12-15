@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon"
           href="http://www.vsuwt.ru/bitrix/templates/modern_blue_s1_copy_copy/favicon.ico">
-    <link rel="stylesheet" href="../static/styles/style.css">
+    <link th:href="@{/styles/style.css}" rel="stylesheet" type="text/css"/>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -15,51 +15,77 @@
 </head>
 <body class=" //bodySignIN">
 
-<header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+<header class="d-flex flex-wrap justify-content-center py-3  border-bottom">
+    <a th:href="@{/}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
         <img class="imgLog" src="http://www.vsuwt.ru/include/logo_white100x100.png">
         <span class="fs-1">ВГУВТ.Работа</span>
     </a>
 
     <ul class="nav nav-pills">
 
-        <!--        <li class="nav-item"><a href="#" class="nav-link">Студентам</a></li>-->
-        <!--        <li class="nav-item"><a href="#" class="nav-link">Работодателям</a></li>-->
-        <!--        <li class="nav-item"><a href="login.html" class="nav-link active" aria-current="page">Войти</a></li>-->
+        <li class="nav-item"><a th:href="@{/}" class="nav-link">Студентам</a></li>
+        <li class="nav-item"><a th:href="@{/students}" class="nav-link">Работодателям</a></li>
+        </li>
+        <!-- <li class="nav-item"><a href="signIN.html" class="nav-link active" aria-current="page">Войти</a></li> -->
     </ul>
 </header>
 
 <div class="divSignIN">
-    <main class="form-signin center ">
-        <form class="center text-center" name="f" th:action="@{/login}" method="post">
+    <main class="form-signin center col-5">
+        <form method="post" class="center text-center" th:action="@{/login}" >
+
             <div th:if="${param.error}">
                 Неправильный Логин или пароль.
             </div>
             <div th:if="${param.logout}">
                 Вы вышли из системы.
             </div>
-<!--            //placeholder="name@example.com"-->
-            <div class="form-floating">
-                <input type="text" class="form-control" id="username" name="username">
-                <label for="username">Логин </label>
+
+            <div class="form-floating padding7">
+                <input type="text" class="form-control" name="username" id="username">
+                <label for="username">Имя пользователя </label>
             </div>
-            <div class="form-floating">
-                <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+            <div class="form-floating padding7" >
+                <input type="password" class="form-control" name="password" id="password" placeholder="Password">
                 <label for="password">Пароль</label>
             </div>
-<!--            <div class="checkbox mb-3">-->
-<!--                <label>-->
-<!--                    <input type="checkbox" value="remember-me"> Запомнить меня-->
-<!--                </label>-->
-<!--            </div>-->
+
+            <!--          <div class="checkbox mb-3">-->
+            <!--            <label>-->
+            <!--              <input type="checkbox" value="remember-me"> Запомнить меня-->
+            <!--            </label>-->
+            <!--          </div>-->
+            <div class="padding7">
             <button class="w-100 btn btn-lg btn-primary" type="submit">Войти</button>
-            <a th:href="@{/register}" class="nav-link">Зарегестрироваться</a>
+            </div>
+            <a th:href="@{/register}" class="nav-link">Зарегистрироваться</a>
         </form>
     </main>
 
 
 </div>
 
+<footer class="footerPadding bd-footer bg-light  padd">
+    <div class="container-fluid footerPadding">
+        <div class="row">
+            <div class="col-md-4 col-lg-4 col-xl-3 textAlignCenter">
+                Волжский Государственный Университет Водного Транспорта
+            </div>
+
+            <!-- <div class="social-networks">
+                        <a href="https://vk.com/vsuwt" title="ВКонтакте" class="social-network"><i class="fab fa-vk fa-2x" aria-hidden="true"></i></a>
+                        <a href="https://www.instagram.com/vodnik_nn/" title="Instagram" class="social-network"><i class="fab fa-instagram fa-2x" aria-hidden="true"></i></a>
+                        <a href="https://www.youtube.com/channel/UCH2MS37K5_-jt1kX2QtvmLA" title="YouTube" class="social-network"><i class="fab fa-youtube fa-2x" aria-hidden="true"></i></a>
+                  </div> -->
+            <div class="col-md-6 col-lg-6 col-xl-7 textAlignCenter">Нижний Новгород, ул. Нестерова, 5</div>
+
+
+            <div class="col-md-2 col-lg-2 col-xl-2 textAlignCenter">
+                © ВГУВТ, 2021
+            </div>
+        </div>
+    </div>
+</footer>
 
 <!-- Вариант 1: Bootstrap в связке с Popper
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> -->

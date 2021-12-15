@@ -1,0 +1,119 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <!-- Обязательные метатеги -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon"
+          href="http://www.vsuwt.ru/bitrix/templates/modern_blue_s1_copy_copy/favicon.ico">
+    <link th:href="@{/styles/style.css}" rel="stylesheet" type="text/css"/>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <title>ВГУВТ.Работа</title>
+</head>
+<body>
+<header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+    <a th:href="@{/}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+        <img class="
+        imgLog" src="http://www.vsuwt.ru/include/logo_white100x100.png">
+        <span class="fs-1">ВГУВТ.Работа</span>
+    </a>
+
+    <ul class="nav nav-pills">
+        <li class="nav-item"><a th:href="@{/create-employer-form}" class="nav-link">Создать анкету компании</a></li>
+        <li class="nav-item"><a th:href="@{/}" class="nav-link">Студентам</a></li>
+        <li class="nav-item"><a th:href="@{/students}" class="nav-link">Работодателям</a></li>
+        <li class="nav-item"><a href="#" class="nav-link" th:if="${principalName != 'noname'}"
+                                th:text="${principalName}"></a></li>
+
+        <li class="nav-item"><a href="/logout" class="nav-link active" th:if="${principalName == 'noname'}"
+                                aria-current="page">Войти</a></li>
+        <li class="nav-item"><a href="/logout" class="nav-link active" th:if="${principalName != 'noname'}"
+                                aria-current="page">Выйти</a></li>
+    </ul>
+</header>
+<div class="container Poisk">
+    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Введите профессию" aria-label="Recipient's username"
+                   aria-describedby="button-addon2">
+            <button type="button" class="btn btn-primary">Найти</button>
+        </div>
+    </form>
+</div>
+ <!--  -fluid  -->
+    <div class="row g-5 padd">
+        <div class=" col-md-4 col-lg-4 col-xl-3 order-md-last ">
+
+            <div class="divRightPanell">
+                <p class="p-meny"> Компания:</p>
+                <select id="disabledSelect1" class="form-select">
+
+                    <option>Все</option>
+                    <option>Водоход</option>
+                    <option>Гама</option>
+                </select>
+                <p class="p-meny"> Теплоход:</p>
+                <select id="disabledSelect2" class="form-select">
+                    <option>Все</option>
+                    <option>Александр Пушкин</option>
+                    <option>Максим Горький</option>
+                    <option>Мстислав Рострапович</option>
+                </select>
+            </div>
+
+
+        </div>
+        <div class="col-md-8 col-lg-8 col-xl-9">
+            <div class="container-fluid divBorder padding7 divMarginBottom" th:each="employer :${employers}">
+                <div class="row" >
+                    <h2 class="mt-6 col-md-9 col-lg-9 col-xl-10" th:utext="${employer.position}">Матрос</h2>
+                    <p class="lead col-md-3 col-lg-3 col-xl-2 " th:utext="${employer.price}">40 000 р</p>
+                </div>
+
+                <div class="row">
+                    <p class="lead col-md-4 col-lg-4 col-xl-4" th:utext="${employer.companyName}">Водоход</p>
+                    <p class="padding0 lead col-md-1 col-lg-1 col-xl-1 " style="width: 60px;">Т/х:</p>
+                    <p class="lead col-md-6 col-lg-6 col-xl-6" th:utext="${employer.ship}">Александр Пушкин</p>
+                </div>
+
+                <p th:utext="${employer.about}"></p>
+
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <footer class="footerPadding bd-footer bg-light footerMargin padd">
+        <div class="container-fluid footerPadding">
+            <div class="row">
+                <div class="col-md-4 col-lg-4 col-xl-3 textAlignCenter">
+                    Волжский Государственный Университет Водного Транспорта
+                </div>
+
+                <!-- <div class="social-networks">
+                            <a href="https://vk.com/vsuwt" title="ВКонтакте" class="social-network"><i class="fab fa-vk fa-2x" aria-hidden="true"></i></a>
+                            <a href="https://www.instagram.com/vodnik_nn/" title="Instagram" class="social-network"><i class="fab fa-instagram fa-2x" aria-hidden="true"></i></a>
+                            <a href="https://www.youtube.com/channel/UCH2MS37K5_-jt1kX2QtvmLA" title="YouTube" class="social-network"><i class="fab fa-youtube fa-2x" aria-hidden="true"></i></a>
+                      </div> -->
+                <div class="col-md-6 col-lg-6 col-xl-7 textAlignCenter">Нижний Новгород, ул. Нестерова, 5</div>
+
+
+                <div class="col-md-2 col-lg-2 col-xl-2 textAlignCenter">
+                    © ВГУВТ, 2021
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Вариант 1: Bootstrap в связке с Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+
+</body>
+</html>

@@ -16,7 +16,7 @@
 <body class=" //bodySignIN">
 
 <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-    <a th:href="@{/}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+    <a th:href="@{/employers}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
         <img class="imgLog" src="http://www.vsuwt.ru/include/logo_white100x100.png">
         <span class="fs-1">ВГУВТ.Работа</span>
     </a>
@@ -29,11 +29,12 @@
     </ul>
 </header>
 
- <div class=" center">
+<div class=" center">
     <div class="col-xs-8 col-sm-8 col-md-7 col-lg-5 col-xl-5 form-registr ">
 
-        <form class="needs-validation" method="post" th:action="@{/register}">
+        <form method="post" class="needs-validation" th:action="@{/create-student-form}">
             <div class="row g-3">
+
                 <!-- <div class="col-sm-6">
                   <label for="firstName" class="form-label">First name</label>
                   <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
@@ -62,55 +63,76 @@
                 </div> -->
 
                 <div class="col-12">
-                    <label for="username" class="form-label">Имя пользователя </label>
-                    <input type="text" class="form-control" id="username" name="username">
+                    <label for="name" class="form-label">Имя </label>
+                    <input type="text" class="form-control" id="name" name="name">
+                    <div class="invalid-feedback">
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <label for="position" class="form-label">Должнность </label>
+                    <input type="text" class="form-control" id="position" name="position">
+                    <div class="invalid-feedback">
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <label for="education" class="form-label">Образование </label>
+                    <input type="text" class="form-control" id="education" name="education">
                     <div class="invalid-feedback">
 
                     </div>
                 </div>
 
                 <div class="col-12">
-                    <label for="password" class="form-label">Пароль</label>
-                    <input type="password" id="password" name="password" class="form-control"
-                           aria-describedby="passwordHelpBlock">
-                    <div id="passwordHelpBlock" class="form-text">
-                        Ваш пароль должен состоять из 8-20 символов, содержать буквы и цифры.
+                    <label for="speciality" class="form-label">Специальность </label>
+                    <input type="text" class="form-control" id="speciality" name="speciality">
+                    <div class="invalid-feedback">
                     </div>
                 </div>
 
-                <div class="col-12">
-                    <label for="repeatedPassword" class="form-label">Повторите пароль</label>
-                    <input type="password" id="repeatedPassword" name="repeatedPassword" class="form-control"
-                           aria-describedby="passwordHelpBlock">
-
+                <div class="mb-3">
+                    <label for="about" class="form-label">О себе</label>
+                    <textarea class="form-control" id="about" name="about" rows="3"></textarea>
                 </div>
+
 
                 <hr class="my-4">
 
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="data" onchange="document.getElementById('register').disabled = !this.checked;">
-                    <label class="form-check-label" for="data">Я соглашаюсь на обработку персональных данных</label>
-                </div>
-
-                <hr class="my-4">
-
-                <button class="w-100 btn btn-primary btn-lg" id="register" disabled=disabled type="submit">Зарегистрироваться</button>
+                <button class="w-100 btn btn-primary btn-lg" type="submit">Опубликовать</button>
             </div>
         </form>
+
     </div>
 </div>
 
-<!--<script>-->
-<!--    function agree() {-->
-<!--        var checkBox = document.getElementById("data");-->
-<!--        var button = document.getElementById("register");-->
-<!--        if (checkBox.checked){-->
-<!--            button. =false;-->
-<!--        } else {-->
-<!--            button.hidden=true;-->
-<!--        }-->
-<!--    }-->
-<!--</script>-->
+
+<footer class="footerPadding bd-footer bg-light footerMargin padd">
+    <div class="container-fluid footerPadding">
+        <div class="row">
+            <div class="col-md-4 col-lg-4 col-xl-3 textAlignCenter">
+                Волжский Государственный Университет Водного Транспорта
+            </div>
+            <!-- <div class="col-6 col-lg-3 offset-lg-3 mb-3">
+              <h5>Ссылки</h5> -->
+            <!-- <div class="col-md-6 col-lg-6 col-xl-6"> -->
+            <!-- <div class="social-networks">
+                        <a href="https://vk.com/vsuwt" title="ВКонтакте" class="social-network"><i class="fab fa-vk fa-2x" aria-hidden="true"></i></a>
+                        <a href="https://www.instagram.com/vodnik_nn/" title="Instagram" class="social-network"><i class="fab fa-instagram fa-2x" aria-hidden="true"></i></a>
+                        <a href="https://www.youtube.com/channel/UCH2MS37K5_-jt1kX2QtvmLA" title="YouTube" class="social-network"><i class="fab fa-youtube fa-2x" aria-hidden="true"></i></a>
+                  </div> -->
+            <div class="col-md-6 col-lg-6 col-xl-7 textAlignCenter">Нижний Новгород, ул. Нестерова, 5</div>
+            <!-- </div> -->
+            <!-- </div> -->
+
+
+            <div class="col-md-2 col-lg-2 col-xl-2 textAlignCenter">
+                © ВГУВТ, 2021
+            </div>
+        </div>
+    </div>
+</footer>
+
 <!-- Вариант 1: Bootstrap в связке с Popper
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> -->
 </body>

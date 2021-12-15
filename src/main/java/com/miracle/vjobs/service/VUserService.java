@@ -29,4 +29,8 @@ public class VUserService {
         vUserRepository.save(vUser);
     }
 
+    public VUser findVUserByUsername(String username) {
+        return vUserRepository.findVUserByUsername(username);
+    }
+
 }

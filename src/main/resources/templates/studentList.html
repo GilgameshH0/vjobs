@@ -1,0 +1,141 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <!-- Обязательные метатеги -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon"
+          href="http://www.vsuwt.ru/bitrix/templates/modern_blue_s1_copy_copy/favicon.ico">
+    <link th:href="@{/styles/style.css}" rel="stylesheet" type="text/css"/>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <title>ВГУВТ.Работа</title>
+</head>
+<body>
+<header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+    <a th:href="@{/}" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+        <img class="
+        imgLog" src="http://www.vsuwt.ru/include/logo_white100x100.png">
+        <span class="fs-1">ВГУВТ.Работа</span>
+    </a>
+
+    <ul class="nav nav-pills">
+        <li class="nav-item"><a th:href="@{/create-student-form}" class="nav-link">Создать анкету студента</a></li>
+        <li class="nav-item"><a th:href="@{/}" class="nav-link">Студентам</a></li>
+        <li class="nav-item"><a th:href="@{/students}" class="nav-link">Работодателям</a></li>
+        <li class="nav-item"><a href="#" class="nav-link" th:if="${principalName != 'noname'}"
+                                th:text="${principalName}"></a></li>
+
+        <li class="nav-item"><a href="/logout" class="nav-link active" th:if="${principalName == 'noname'}"
+                                aria-current="page">Войти</a></li>
+        <li class="nav-item"><a href="/logout" class="nav-link active" th:if="${principalName != 'noname'}"
+                                aria-current="page">Выйти</a></li>
+    </ul>
+</header>
+<div class="container Poisk">
+    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3"  method="get">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Введите профессию" aria-label="Recipient's username"
+                   aria-describedby="button-addon2">
+            <button type="button" class="btn btn-primary">Найти</button>
+        </div>
+    </form>
+</div>
+
+    <div class="row g-5 padd">
+        <div class=" col-md-4 col-lg-4 col-xl-3 order-md-last ">
+
+            <div class="divRightPanell">
+                <p class="p-meny"> Образование</p>
+                <select id="disabledSelect" class="form-select">
+
+                    <option>Все</option>
+                    <option>Высшее</option>
+                    <option>Среднее</option>
+                </select>
+                <!-- <p class="p-meny"> Должность</p>
+                <select id="disabledSelect" class="form-select">
+                  <option>Все</option>
+                  <option>Моторист</option>
+                  <option>Матрос</option>
+                  <option>Рулевой</option>
+                  <option>Моторист-рулевой</option>
+                  <option>Радист</option>
+                  <option>Помощьник механиека</option>
+                  <option>Помощьник электромеханиека</option>
+                  <option>Третий помощьник капитана</option>
+                </select> -->
+                <p class="p-meny"> Специальность</p>
+                <select id="disabledSelect0" class="form-select">
+                    <option>Все</option>
+                    <option>Судоводитель</option>
+                    <option>Механик</option>
+                    <option>Электромеханик</option>
+                    <option>Радист</option>
+                </select>
+                <label class="labelMargin">
+                    <input type="checkbox" value="nalBJS"> наличие БЖС
+                </label>
+                <label class="labelMargin">
+                    <input type="checkbox" value="nalBJS"> наличие бак. анализов
+                </label>
+            </div>
+
+
+        </div>
+        <div class="col-md-8 col-lg-8 col-xl-9" th:each="student :${students}">
+            <div class="container-fluid divBorder padding7 divMarginBottom">
+
+                <div class="row">
+                    <h2 class="mt-6 col-md-7 col-lg-7 col-xl-8" th:utext="${student.position}"></h2>
+                    <h4 class="mt-1 col-md-5 col-lg-5 col-xl-4 " th:utext="${student.name}"></h4>
+                </div>
+
+
+                <label>Образование: </label><label style="margin-left: 20px;"
+                                                   th:utext="${student.education}"></label><br>
+                <label>Специальность: </label><label style="margin-left: 20px;"
+                                                     th:utext="${student.speciality}"></label>
+                <p th:utext="${student.about}"></p>
+
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <footer class="footerPadding bd-footer bg-light footerMargin padd">
+        <div class="container-fluid footerPadding">
+            <div class="row">
+                <div class="col-md-4 col-lg-4 col-xl-3 textAlignCenter">
+                    Волжский Государственный Университет Водного Транспорта
+                </div>
+                <!-- <div class="col-6 col-lg-3 offset-lg-3 mb-3">
+                  <h5>Ссылки</h5> -->
+                <!-- <div class="col-md-6 col-lg-6 col-xl-6"> -->
+                <!-- <div class="social-networks">
+                            <a href="https://vk.com/vsuwt" title="ВКонтакте" class="social-network"><i class="fab fa-vk fa-2x" aria-hidden="true"></i></a>
+                            <a href="https://www.instagram.com/vodnik_nn/" title="Instagram" class="social-network"><i class="fab fa-instagram fa-2x" aria-hidden="true"></i></a>
+                            <a href="https://www.youtube.com/channel/UCH2MS37K5_-jt1kX2QtvmLA" title="YouTube" class="social-network"><i class="fab fa-youtube fa-2x" aria-hidden="true"></i></a>
+                      </div> -->
+                <div class="col-md-6 col-lg-6 col-xl-7 textAlignCenter">Нижний Новгород, ул. Нестерова, 5</div>
+                <!-- </div> -->
+                <!-- </div> -->
+
+
+                <div class="col-md-2 col-lg-2 col-xl-2 textAlignCenter">
+                    © ВГУВТ, 2021
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Вариант 1: Bootstrap в связке с Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+</body>
+</html>
