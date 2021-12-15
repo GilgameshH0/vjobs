@@ -1,6 +1,5 @@
 package com.miracle.vjobs.controller;
 
-import com.miracle.vjobs.Dto.VUserLoginDto;
 import com.miracle.vjobs.Dto.VUserRegUpdDto;
 import com.miracle.vjobs.service.VUserService;
 import org.springframework.stereotype.Controller;
@@ -18,22 +17,26 @@ public class VUserController {
         this.vUserService = vUserService;
     }
 
-    @GetMapping("/test")
-    public String home(Model model) {
-        String studentName = "Alexey";
-        model.addAttribute("studentName", studentName);
-        return "home";
+    @GetMapping("/login")
+    public String login(Model model) {
+        return "login";
+    }
+
+    @GetMapping("/register")
+    public String register() {
+       return "register";
     }
 
     @PostMapping("/register")
-    public void registerUser(@ModelAttribute("vUserRegUpdDto") VUserRegUpdDto vUserRegUpdDto) {
+    public String registerUser(@ModelAttribute("vUserRegUpdDto") VUserRegUpdDto vUserRegUpdDto) {
         vUserService.registerVUser(vUserRegUpdDto);
+        return "redirect:/login";
     }
 
-    @PostMapping("/login")
-    public void loginUser(@ModelAttribute("vUserLoginDto") VUserLoginDto vUserLoginDto) {
-        vUserService.loginUser(vUserLoginDto);
-    }
+//    @PostMapping("/login")
+//    public void loginUser(@ModelAttribute("vUserLoginDto") VUserLoginDto vUserLoginDto) {
+//        vUserService.loginUser(vUserLoginDto);
+//    }
 
 
 }

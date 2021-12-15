@@ -20,6 +20,7 @@ public class Student {
     private VUser vUser;
     @Enumerated(EnumType.STRING)
     private Gender gender;
+    private String name;
     private String profession;
 //    private LocalDate birthdate;
 
@@ -56,5 +57,13 @@ public class Student {
 
     public void setProfession(String profession) {
         this.profession = profession;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

@@ -3,12 +3,7 @@ package com.miracle.vjobs.Dto;
 public class VUserRegUpdDto {
     private String username;
     private String password;
-//    private String name;
-//    private String surname;
-//    private String patronymic;
-//    private Gender gender;
-//    private LocalDate birthdate;
-//    private String email;
+    private String repeatedPassword;
 
     public VUserRegUpdDto() {
     }
@@ -42,6 +37,14 @@ public class VUserRegUpdDto {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getRepeatedPassword() {
+        return repeatedPassword;
+    }
+
+    public void setRepeatedPassword(String repeatedPassword) {
+        this.repeatedPassword = repeatedPassword;
     }
 }
 
