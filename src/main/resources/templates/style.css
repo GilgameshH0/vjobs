@@ -1,0 +1,64 @@
+
+
+header {
+    background: #021933;
+}
+
+.imgLog{
+    margin:0px 30px;
+}
+
+.fs-1{
+    color:white;
+}
+
+.nav{
+    margin-right: 20px;
+}
+
+.row{
+    margin: 0px 15px;
+}
+
+.p-meny{
+    margin-left: 15px;
+    margin-bottom: 0px;
+}
+
+.mt-5{
+    margin-top: 5px;
+}
+
+.divBorder{
+    box-shadow: 0 0 1px 0
+
+}
+
+
+.divSignIN{
+    
+    display: flex;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #f5f5f5;
+}
+
+.signINposition{
+    margin-left: 35%;
+    margin-top: 10%;
+}
+
+.form-signin{
+    margin: 7% auto;
+}
+
+.form-registr {
+    margin: 0% auto;
+}
+
+.needs-validation{
+    margin-left: 20px;
+    margin-right:  20px;
+    margin-bottom: 50px;
+}
